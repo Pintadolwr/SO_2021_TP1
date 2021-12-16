@@ -235,8 +235,43 @@ int lineSum(Problema p, int** matrix, int* solution, int i) {
 
 int* solutionChangeValue(Problema p, PtSolucao sol) {
 	int* solution = (int*) calloc(p.m, sizeof(int));
+	int** matrix = sol->matrizPadrao;
+	int* zeros = sol->zeros;
+	
 	//copiar os valores de sol->vectorSolucao
 	
+	for(int i = 0; i < p.m; i++){
+		solution[i] = sol->vetorSolucao[i]
+	}
+	
+	int position = rand() % p.m;	
+
+	int value = rand() % (maxValues[position] +1);
+
+	for(int j = 0; j < p.m; j++){	
+		if(zeros[position] == p.m-1){
+			position = (position+1) % p.m;
+		}
+	}
+		
+	do{				
+		solution[position] = value;
+	}while(!isValidSolution(p, matrix, solution))
+
+	for (int j = 0; j < p.m; j++) {
+				int n = matrix[i][j];
+				if (n == 0) continue;
+
+				int rand = p.qtddPecas[i] / n;
+				if  (p.qtddPecas[i] % n != 0) {
+					rand++;
+				}
+				//se for maior substituimos
+				if (rand > solution[j]) {
+					solution[j] = rand;
+				}
+			}
+
 	//verificar os valores fixos (linhas com zeros = p.m - 1 e que )
 	return solution;
 }
