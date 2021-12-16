@@ -253,7 +253,7 @@ int* solutionChangeValue(Problema p, PtSolucao sol) {
 			position = (position+1) % p.m;
 		}
 	}
-		
+	//	
 	do{				
 		solution[position] = value;
 	}while(!isValidSolution(p, matrix, solution))
